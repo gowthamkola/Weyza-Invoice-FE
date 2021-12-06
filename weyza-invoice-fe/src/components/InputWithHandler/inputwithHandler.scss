@@ -1,0 +1,28 @@
+.label-default{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+.input-default{
+    margin-left: 25px;
+    width: 150px;
+    height: 32px;
+    border: 1px solid gray;
+    border-radius: 9px;
+    font: inherit;
+    text-align: center;
+    color: #36454F;
+    letter-spacing: -.5px;
+    &.input-invalid{
+        border: 1px solid #e97e4f;
+    }
+}
+
+.error-messsage{
+    text-align: center;
+    color: #e97e4f;
+    font-weight: 600;
+}

@@ -1,0 +1,12 @@
+.form-login{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin: 200px auto;
+    padding: 50px 100px;
+    border: 1px solid gray;
+    border-radius: 9px;
+}
+.error-message{
+    margin: 20px auto;
+}
