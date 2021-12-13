@@ -2,5 +2,14 @@ export const LOG_USER_IN_PENDING = 'LOG_USER_IN_PENDING';
 export const LOG_USER_SUCCESS = 'LOG_USER_SUCCESS';
 export const LOG_USER_ERROR = 'LOG_USER_ERROR';
 export const LOGIN_ATTEMPTED = 'LOGIN_ATTEMPTED';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const SHOW_LOADER ='SHOW_LOADER';
 export const HIDE_LOADER = 'HIDE_LOADER';
+export const LOGOUT = 'LOGOUT'
+export const SET_MESSAGE = "SET_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+export const SAVE_LOGGED_IN_USER = 'SAVE_LOGGED_IN_USER';

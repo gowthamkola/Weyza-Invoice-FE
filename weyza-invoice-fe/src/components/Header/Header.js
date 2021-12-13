@@ -1,15 +1,54 @@
 import React from 'react';
+import ButtonWithHandler from '../ButtonWithHandler/ButtonWithHandler';
+import {connect} from 'react-redux';
+import {showLoader, hideLoader} from '../../actions/spinnerActions';
+import './header.scss';
+import { logUserOut } from '../../actions/userLoginActions'; 
+import { Link, useNavigate } from 'react-router-dom';
 
-class Header extends React.Component {
-    constructor(props) {
-        super(props);
+const Header = (props) => {
+    const userLoggedIn = props.metadata.userLogged;
+    const navigate = useNavigate()
+    const logUserOut = (e) => {
+        console.log(e);
+        props.logUserOut()
+        navigate('/login')
     }
-    render() {
+    if(userLoggedIn) {
+        return(<div>
+            <div className="headerEl">
+                <ButtonWithHandler
+                    handleClick = {logUserOut}
+                    buttonLabel = "Logout"
+                    buttonClass = "header-button"
+                />
+            </div>
+            {}
+            <div></div>
+        </div>)
+    } else{
         return(
-            <nav className="headerEl">
 
-            </nav>
+            <div className="headerEl">
+                <Link to="/login">
+                    <ButtonWithHandler
+                    buttonLabel = "Login" />
+                 </Link>
+            </div>
         )
     }
-}
-export default Header;
+    }
+
+    const mapStateToProps = (state) => {
+        return {
+            loading: state.loading,
+            metadata: state.metaData
+          }
+    } 
+    const mapDispatchToProps = (dispatch) => ({
+        showLoader: () => dispatch(showLoader()),
+        hideLoader: () => dispatch(hideLoader()),
+        logUserOut: () => dispatch(logUserOut())
+    });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

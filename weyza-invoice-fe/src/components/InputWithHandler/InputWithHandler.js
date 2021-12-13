@@ -2,20 +2,28 @@ import React, {useState} from 'react';
 import './inputwithHandler.scss';
 
 function InputWithHandler(props) {
-    const [requiredError, updateRequiredState] = useState(false);
+    const [errorFound, updateRequiredState] = useState(false);
     const defaulErrorMessageRequired = `${props.inputLabel} is required`;
-    const inputClass = `input-default ${props.inputClass? props.inputClass:''} ${props.validInput || !requiredError ? '': 'input-invalid'}`;
+    const inputClass = `input-default ${props.inputClass? props.inputClass:''} ${!errorFound ? '': 'input-invalid'}`;
     const labelClass =  props.labelClass ? `label-default ${props.labelClass}` : 'label-default';
 
-    const errorMessage = props.validInput || !requiredError ?
-     '' : props.errorMessage ? 
-     (<div className="error-messsage">{props.errorMessage}</div>) : requiredError ? 
-     (<div className="error-messsage">{defaulErrorMessageRequired}</div>) : '';
+    const errorMessage = () => {
+        if(errorFound){
+            return (<div className="error-messsage">{defaulErrorMessageRequired}</div>)
+        } else if(!props.validInput){
+            return(<div className="error-messsage">{props.errorMessage}</div>)
+        } else {
+            return('')
+        }
+    }
 
     const requiredInput = (e) => {
         if(props.requiredInput && e.target.value.length < 1){
             updateRequiredState(true);
         }
+        else{
+            updateRequiredState(false);
+        }  
         props.validateInputField(e)
     }
 
@@ -32,7 +40,7 @@ function InputWithHandler(props) {
                         onBlur={requiredInput}>
                     </input>
                 </label>
-                {errorMessage}
+                {errorMessage()}
             </React.Fragment>
         )
 
