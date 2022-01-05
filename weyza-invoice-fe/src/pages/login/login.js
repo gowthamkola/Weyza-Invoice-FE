@@ -8,6 +8,7 @@ import { Formik, Form } from 'formik';
 import TextInput from '../../components/textInput/TextInput';
 import * as Yup from 'yup';
 import {updateUserLogin} from '../../actions/userLoginActions';
+import * as endPoints from '../../constants/enpointURL'
 
 
 const Loginform = (props) => {
@@ -22,7 +23,7 @@ const Loginform = (props) => {
     }
  
     const logUserIn = (values) => {
-        Axios.post('http://localhost:3000/api/auth/login', {username: values.userName, password: values.password1}).then(res =>{
+        Axios.post(endPoints.LOG_USER_IN, {username: values.userName, password: values.password1}).then(res =>{
             console.log(res)
              props.hideLoader();
              props.updateUserLogin(res.data);

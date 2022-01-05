@@ -8,10 +8,28 @@ import {showLoader, hideLoader} from '../../../actions/spinnerActions';
 import Axios from 'axios';
 import TextInput from '../../../components/textInput/TextInput';
 import SelectDropdown from '../../../components/selectDropdown/SelectDropdown';
+import * as endpoints from '../../../constants/enpointURL'
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 const AddUser = (props) => {
     const submitAddUser = (formValues) => {
+        const payload = {
+            name: formValues.firstName + formValues.lastName,
+            email: formValues.email,
+            phone: formValues.phoneNum,
+            role: formValues.role,
+            userReferee: props.metadata.userName,
+            adminRole: props.metadata.role
+        }
+        const headers = {
+            'Authorization': props.metadata.token
+          }
+          console.log(headers)
+        Axios.post(endpoints.ADD_USER, payload, headers ).then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err.response)
+        })
         console.log(formValues)
     }
     return(<Formik
