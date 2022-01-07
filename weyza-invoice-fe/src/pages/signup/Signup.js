@@ -73,7 +73,7 @@ const SignupForm = (props) => {
           onSubmit={(values, { setSubmitting }) => {
               submitSignupForm(values);
           }}
-        ><div className="sign-up-form">
+        ><div className="form-login">
           <Form>
             <TextInput
               label="First Name"

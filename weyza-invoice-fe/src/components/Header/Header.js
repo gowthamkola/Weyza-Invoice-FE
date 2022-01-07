@@ -30,9 +30,11 @@ const Header = (props) => {
         return(
 
             <div className="headerEl">
-                <Link to="/login">
+                <Link className="header-link" to="/login">
                     <ButtonWithHandler
-                    buttonLabel = "Login" />
+                        buttonLabel = "Login"
+                        buttonClass = "header-button"
+                    />
                  </Link>
             </div>
         )

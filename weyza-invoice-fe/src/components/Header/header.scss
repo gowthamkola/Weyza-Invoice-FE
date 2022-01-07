@@ -4,7 +4,16 @@
     position: fixed;
     top: 0;
     background-color: black;
+    height: 60px;
 }
 .header-button.button-default{
     margin: 25px 100px 25px auto;
+}
+.header-link{
+    height: 30px;
+    margin: auto 50px;
+}
+
+.button-default.header-button{
+    margin: 0;
 }
